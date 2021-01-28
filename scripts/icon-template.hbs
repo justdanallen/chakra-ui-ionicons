@@ -1,0 +1,10 @@
+import React from "react";
+import { Icon, IconProps } from '@chakra-ui/icon';
+
+export const {{componentName}} = (props: IconProps) => (
+  <Icon viewBox='{{viewBox}}' {...props}>
+    {{#each tags}}
+    {{{this}}}
+    {{/each}}
+  </Icon>
+);
