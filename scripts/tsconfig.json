@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "typeRoots": ["./node_modules/@types", "./"],
+    "types": ["node"]
+  },
+  "include": ["./"],
+  "rootDir": ".",
+}
