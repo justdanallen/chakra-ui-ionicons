@@ -53,6 +53,7 @@
     }
   ],
   "devDependencies": {
+    "@chakra-ui/icon": "^1.0.3",
     "@size-limit/preset-small-lib": "^4.9.1",
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",
