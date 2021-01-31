@@ -43,7 +43,7 @@ An input icon like this:
 
 The generated output:
 
-`accessibility-outline.svg`
+`accessibility-outline.tsx`
 
 ```ts
 import React from 'react';
