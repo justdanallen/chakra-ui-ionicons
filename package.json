@@ -18,7 +18,8 @@
     "lint:fix": "tsdx lint --fix",
     "generate": "ts-node --project scripts/tsconfig.json scripts/generate.ts",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "preinstall": "npx npm-force-resolutions"
   },
   "peerDependencies": {
     "@chakra-ui/react": "^1.2.1",
@@ -73,5 +74,8 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.1.0",
     "typescript": "^4.1.3"
+  },
+  "resolutions": {
+    "node-forge": ">=0.10.0"
   }
 }
