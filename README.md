@@ -2,7 +2,7 @@
 
 [![NPM](https://nodei.co/npm/chakra-ui-ionicons.png?compact=true)](https://npmjs.org/package/chakra-ui-ionicons)
 
-This project generates Chakra UI custom Icon components from the Icon Icons (v5) Icons.
+This project generates Chakra UI custom Icon components from Ion Icons (v5) svgs.
 
 Features:
 
@@ -30,7 +30,7 @@ Naming conventions are as follow:
 
 ## Generating the icons:
 
-To generate the icons drop the latest Ion Icons into `/ionicons`. Then run:
+To generate the icons drop the latest Ion Icons svgs into `/ionicons` directory. Then run:
 
 ```
 npm run generate
@@ -48,7 +48,7 @@ An input icon like this:
 </svg>
 ```
 
-The generated output:
+Will generate output like this:
 
 `accessibility-outline.tsx`
 
