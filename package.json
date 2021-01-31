@@ -37,6 +37,7 @@
   },
   "name": "chakra-ui-ionicons",
   "author": "Dan Allen",
+  "description": "IonIcons (v5) built for Chakra UI",
   "repository": {
     "type": "git",
     "url": "https://github.com/justdanallen/chakra-ui-ionicons"
