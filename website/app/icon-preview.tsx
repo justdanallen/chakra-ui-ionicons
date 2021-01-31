@@ -33,7 +33,9 @@ const highlightMatches = (
       highlights.push(input.slice(matches[prior][1], match[0]));
 
     // splice current start -> current end
-    highlights.push(<strong>{input.slice(match[0], match[1] + 1)}</strong>);
+    highlights.push(
+      <strong key={curr}>{input.slice(match[0], match[1] + 1)}</strong>
+    );
 
     // splice current end to next start
     if (isLast) {

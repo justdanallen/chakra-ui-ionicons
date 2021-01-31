@@ -91,10 +91,10 @@ export function IconSearch({ options, onSelect }: IconSearchProps) {
         }}
       >
         {!(searchKey.length && numFound === 0)
-          ? filteredIcons.map(({ item, matches }) => {
+          ? filteredIcons.map(({ item, matches, idx }) => {
               return (
                 <IconPreview
-                  key={item.name}
+                  key={item.name + `-${idx}`}
                   {...item}
                   matches={matches?.[0].indices}
                   onSelect={onSelect}
