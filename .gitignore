@@ -7,3 +7,6 @@ ionicons
 node_modules
 .cache
 dist
+
+# Local Netlify folder
+.netlify
