@@ -1,9 +1,28 @@
-import React from "react";
+import React from 'react';
 import { Icon, IconProps } from '@chakra-ui/icon';
 
 export const PushOutlineIcon = (props: IconProps) => (
-<Icon viewBox='0 0 512 512' fill="currentcolor" stroke="currentcolor" {...props}>
-  <path  d='M336 336h40a40 40 0 0040-40V88a40 40 0 00-40-40H136a40 40 0 00-40 40v208a40 40 0 0040 40h40' fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='32'/>
-  <path  fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='32' d='M176 240l80-80 80 80M256 464V176'/>
-</Icon>
+  <Icon
+    viewBox="0 0 512 512"
+    fill="currentcolor"
+    stroke="currentcolor"
+    {...props}
+  >
+    <path
+      d="M336 336h40a40 40 0 0040-40V88a40 40 0 00-40-40H136a40 40 0 00-40 40v208a40 40 0 0040 40h40"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="32"
+    />
+    <path
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="32"
+      d="M176 240l80-80 80 80M256 464V176"
+    />
+  </Icon>
 );

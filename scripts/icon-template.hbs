@@ -2,9 +2,9 @@ import React from "react";
 import { Icon, IconProps } from '@chakra-ui/icon';
 
 export const {{componentName}}Icon = (props: IconProps) => (
-<Icon viewBox='{{viewBox}}' fill="currentcolor" stroke="currentcolor" {...props}>
-  {{#each tags}}
-  {{{this}}}
-  {{/each}}
-</Icon>
+  <Icon viewBox='{{viewBox}}' fill="currentcolor" stroke="currentcolor" {...props}>
+    {{#each tags}}
+    {{{this}}}
+    {{/each}}
+  </Icon>
 );
