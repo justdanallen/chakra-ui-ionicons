@@ -1,8 +1,8 @@
 # About
 
-[![NPM](https://nodei.co/npm/chakra-ui-ionicons.png?compact=true)](https://npmjs.org/package/chakra-ui-ionicons)
-
 This project generates Chakra UI custom Icon components from Ion Icons (v5) svgs.
+
+[![NPM](https://nodei.co/npm/chakra-ui-ionicons.png?compact=true)](https://npmjs.org/package/chakra-ui-ionicons)
 
 Features:
 
