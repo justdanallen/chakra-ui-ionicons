@@ -12,6 +12,8 @@ Features:
 - Treeshakable
 - Bootstrapped with [TSDX](https://github.com/formium/tsdx)
 
+### [Example Site](https://chakra-ui-ionicons-demo.netlify.app)
+
 ## Usage
 
 ```ts
