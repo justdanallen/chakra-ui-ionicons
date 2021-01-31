@@ -1,4 +1,5 @@
 import { SVGNode } from 'svg-parser';
+import { changeCase } from './change-case';
 
 const recursiveFilter = (
   data: SVGNode[],
@@ -37,7 +38,13 @@ export const createTag = (
   properties: Record<string, number | string>
 ) => {
   const stringProps = Object.entries(properties).reduce((acc, [key, value]) => {
-    return acc + ` ${key}='${value}'`;
+    return (
+      acc +
+      ` ${changeCase(key, {
+        input: 'kebab-case',
+        output: 'camelCase',
+      })}='${value}'`
+    );
   }, '');
   return `<${tagName} ${stringProps}/>`;
 };
