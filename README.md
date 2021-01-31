@@ -10,6 +10,7 @@ Features:
 - Works with Chakra dark/light color modes
 - Built in TS
 - Treeshakable
+- Bootstrapped with [TSDX](https://github.com/formium/tsdx)
 
 ## Usage
 
