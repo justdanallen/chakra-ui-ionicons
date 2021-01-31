@@ -1,5 +1,5 @@
 import { Icon } from '@chakra-ui/react';
-import * as Icons from 'chakra-ui-ionicons';
+import * as Icons from '../../src';
 import * as React from 'react';
 import { ReactElement } from 'react';
 import { IconPreview } from './icon-preview';

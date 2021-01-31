@@ -1,12 +1,13 @@
 import {
   chakra,
   Flex,
+  Icon,
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
 } from '@chakra-ui/react';
-import { CloseCircle, Search } from 'chakra-ui-ionicons';
+import { CloseCircleIcon, SearchIcon } from '../../src';
 import Fuse from 'fuse.js';
 import * as React from 'react';
 import { useState } from 'react';
@@ -55,13 +56,12 @@ type IconSearchProps = {
 export function IconSearch({ options, onSelect }: IconSearchProps) {
   const [searchKey, setSearchKey] = useState('');
   const { results: filteredIcons, numFound } = iconSearch(searchKey);
-  console.log(searchKey.length, numFound);
 
   return (
     <>
       <Flex dir="row" alignItems="center">
         <InputGroup>
-          <InputLeftElement children={<Search />} />
+          <InputLeftElement children={<SearchIcon />} />
           <Input
             value={searchKey}
             onChange={e => setSearchKey(e.target.value)}
@@ -71,7 +71,7 @@ export function IconSearch({ options, onSelect }: IconSearchProps) {
             <InputRightElement
               children={
                 <chakra.button lineHeight={0}>
-                  <CloseCircle
+                  <CloseCircleIcon
                     color="gray.500"
                     onClick={() => setSearchKey('')}
                   />
