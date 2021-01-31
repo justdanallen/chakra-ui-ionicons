@@ -21,6 +21,13 @@ import { AddOutlineIcon } from 'chakra-ui-ionicons';
 <AddOutlineIcon boxSize={5} />;
 ```
 
+Naming conventions are as follow:
+
+- Filled : [icon name]Icon, ex `AddIcon`
+- Outlined : [icon name]OutlinedIcon, ex `AddOutlinedIcon`
+- Sharp : [icon name]SharpIcon, ex `AddSharpIcon`
+- Logos : Logo[logo name]Icon, ex `LogoGitHubIcon`
+
 ## Generating the icons:
 
 To generate the icons drop the latest Ion Icons into `/ionicons`. Then run:
