@@ -1,9 +1,9 @@
 import React from "react";
 import { Icon, IconProps } from '@chakra-ui/icon';
 
-export const InvertMode = (props: IconProps) => (
-  <Icon viewBox='0 0 512 512' {...props}>
-    <circle  fill='none' stroke='currentColor' stroke-miterlimit='10' stroke-width='32' cx='256' cy='256' r='208'/>
-    <path  d='M256 176v160a80 80 0 000-160zM256 48v128a80 80 0 000 160v128c-114.88 0-208-93.12-208-208S141.12 48 256 48z'/>
-  </Icon>
+export const InvertModeIcon = (props: IconProps) => (
+<Icon viewBox='0 0 512 512' fill="currentcolor" stroke="currentcolor" {...props}>
+  <circle  fill='none' stroke='currentColor' strokeMiterlimit='10' strokeWidth='32' cx='256' cy='256' r='208'/>
+  <path  d='M256 176v160a80 80 0 000-160zM256 48v128a80 80 0 000 160v128c-114.88 0-208-93.12-208-208S141.12 48 256 48z'/>
+</Icon>
 );

@@ -1,8 +1,8 @@
 import React from "react";
 import { Icon, IconProps } from '@chakra-ui/icon';
 
-export const OpenOutline = (props: IconProps) => (
-  <Icon viewBox='0 0 512 512' {...props}>
-    <path  d='M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'/>
-  </Icon>
+export const OpenOutlineIcon = (props: IconProps) => (
+<Icon viewBox='0 0 512 512' fill="currentcolor" stroke="currentcolor" {...props}>
+  <path  d='M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72' fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='32'/>
+</Icon>
 );

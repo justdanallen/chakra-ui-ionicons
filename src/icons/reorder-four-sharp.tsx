@@ -1,8 +1,8 @@
 import React from "react";
 import { Icon, IconProps } from '@chakra-ui/icon';
 
-export const ReorderFourSharp = (props: IconProps) => (
-  <Icon viewBox='0 0 512 512' {...props}>
-    <path  fill='none' stroke='currentColor' stroke-linecap='square' stroke-linejoin='round' stroke-width='44' d='M102 304h308M102 208h308M102 112h308M102 400h308'/>
-  </Icon>
+export const ReorderFourSharpIcon = (props: IconProps) => (
+<Icon viewBox='0 0 512 512' fill="currentcolor" stroke="currentcolor" {...props}>
+  <path  fill='none' stroke='currentColor' strokeLinecap='square' strokeLinejoin='round' strokeWidth='44' d='M102 304h308M102 208h308M102 112h308M102 400h308'/>
+</Icon>
 );
