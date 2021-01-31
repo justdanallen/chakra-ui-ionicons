@@ -10,15 +10,37 @@ import { CloseCircle, Search } from 'chakra-ui-ionicons';
 import Fuse from 'fuse.js';
 import * as React from 'react';
 import { useState } from 'react';
-import { DefaultIconDisplay } from './default-icon-display';
-import {
-  iconData,
-  IconDisplayData,
-  DefaultIconDisplay as PreRendered,
-} from './icon-data';
+import { iconData, IconDisplayData } from './icon-data';
 import { IconPreview } from './icon-preview';
 
-const fuse = new Fuse(iconData.standard, {
+function createFilteredFuse<T = unknown>(
+  list: T[],
+  options?: Fuse.IFuseOptions<T>
+) {
+  const fuse = new Fuse(list, options);
+
+  const defaultList = list.map(
+    (doc, idx) =>
+      ({
+        item: doc,
+        score: 1,
+        refIndex: idx,
+      } as Fuse.FuseResult<T>)
+  );
+
+  const search = (query: string) => {
+    const results = fuse.search<T>(query);
+    return {
+      isDefault: !!results.length,
+      numFound: results.length,
+      results: results.length ? results : defaultList,
+    };
+  };
+
+  return search;
+}
+
+const iconSearch = createFilteredFuse(iconData.standard, {
   includeMatches: true,
   threshold: 0.1,
   minMatchCharLength: 2,
@@ -32,8 +54,8 @@ type IconSearchProps = {
 
 export function IconSearch({ options, onSelect }: IconSearchProps) {
   const [searchKey, setSearchKey] = useState('');
-  const showSearch = searchKey.length > 1;
-  const filteredIcons = showSearch ? fuse.search(searchKey) : [];
+  const { results: filteredIcons, numFound } = iconSearch(searchKey);
+  console.log(searchKey.length, numFound);
 
   return (
     <>
@@ -68,22 +90,18 @@ export function IconSearch({ options, onSelect }: IconSearchProps) {
           mt: [5, 7],
         }}
       >
-        {showSearch &&
-          (filteredIcons?.length > 0
-            ? filteredIcons.map(({ item, matches }) => {
-                console.log(matches?.[0].indices);
-                return (
-                  <IconPreview
-                    key={item.name}
-                    {...item}
-                    matches={matches?.[0].indices}
-                    onSelect={onSelect}
-                  />
-                );
-              })
-            : 'none found')}
-        {!showSearch && <DefaultIconDisplay onSelect={onSelect} />}
-        {/* {!showSearch && PreRendered} */}
+        {!(searchKey.length && numFound === 0)
+          ? filteredIcons.map(({ item, matches }) => {
+              return (
+                <IconPreview
+                  key={item.name}
+                  {...item}
+                  matches={matches?.[0].indices}
+                  onSelect={onSelect}
+                />
+              );
+            })
+          : 'none found'}
       </chakra.section>
     </>
   );
