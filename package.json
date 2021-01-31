@@ -44,6 +44,7 @@
     "type": "git",
     "url": "https://github.com/justdanallen/chakra-ui-ionicons"
   },
+  "keywords": ["chakra", "ionic icons", "ion icons", "chakra-ui", "chakra-ui icons"],
   "module": "dist/chakra-ui-ionicons.esm.js",
   "size-limit": [
     {
