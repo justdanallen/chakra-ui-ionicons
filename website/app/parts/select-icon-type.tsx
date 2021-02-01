@@ -1,7 +1,12 @@
-import { Box, HStack, useRadio, useRadioGroup } from '@chakra-ui/react';
+import {
+  Box,
+  HStack,
+  useColorMode,
+  useRadio,
+  useRadioGroup,
+} from '@chakra-ui/react';
 import * as React from 'react';
-import { useAppStore } from '.';
-import { SelectedIconType } from './icon-data-2';
+import { useSelectedIconType } from '../state';
 
 function RadioItem(props) {
   const { getInputProps, getCheckboxProps } = useRadio(props);
@@ -9,25 +14,26 @@ function RadioItem(props) {
   const input = getInputProps();
   const checkbox = getCheckboxProps();
 
+  const mode = useColorMode();
+
   return (
     <Box as="label">
       <input {...input} />
       <Box
         {...checkbox}
+        color="gray.500"
         cursor="pointer"
-        borderWidth="1px"
-        borderRadius="md"
-        boxShadow="md"
         _checked={{
-          bg: 'teal.600',
-          color: 'white',
-          borderColor: 'teal.600',
+          color: mode.colorMode === 'light' ? 'gray.700' : 'white',
+          borderBottom: '3px solid',
+          borderColor: 'blue.400',
         }}
         _focus={{
           boxShadow: 'outline',
+          borderColor: 'blue.400',
         }}
-        px={5}
-        py={3}
+        px={3}
+        py={1}
       >
         {props.children}
       </Box>
@@ -36,17 +42,14 @@ function RadioItem(props) {
 }
 
 export function SelectIconType() {
-  const { setSelected, selected } = useAppStore(state => ({
-    selected: state.selectedIconType,
-    setSelected: state.setSelectedIconType,
-  }));
+  const { selectedIconType, setSelectedIconType } = useSelectedIconType();
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'icon-type',
     defaultValue: 'filled',
-    value: selected,
+    value: selectedIconType,
     onChange: value =>
-      setSelected(String(value).toLowerCase() as SelectedIconType),
+      setSelectedIconType(String(value).toLowerCase() as SelectedIconType),
   });
 
   const options: SelectedIconType[] = ['filled', 'outline', 'sharp'];

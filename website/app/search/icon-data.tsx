@@ -1,5 +1,5 @@
 import { Icon } from '@chakra-ui/react';
-import * as Icons from '../../src';
+import * as Icons from '../../../src';
 
 enum IconIconSearchKey {
   logo = 'Logo',
@@ -70,5 +70,3 @@ export const iconData = Object.entries(Icons).reduce(
   },
   {} as IconData
 );
-
-console.log(iconData);
