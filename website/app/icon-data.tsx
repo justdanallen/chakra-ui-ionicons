@@ -1,8 +1,5 @@
 import { Icon } from '@chakra-ui/react';
 import * as Icons from '../../src';
-import * as React from 'react';
-import { ReactElement } from 'react';
-import { IconPreview } from './icon-preview';
 
 export type IconDisplayData = {
   name: string;
@@ -21,10 +18,6 @@ enum IconType {
   sharp = 'Sharp',
   logo = 'Logo',
 }
-
-// const getIcons = (type: IconType) => Object.entries(Icons).reduce()
-export const defaultIconData: IconDisplayData[] = [];
-export const DefaultIconDisplay: ReactElement[] = [];
 
 export const iconData = Object.entries(Icons).reduce(
   (acc, [key, value]) => {
@@ -53,13 +46,6 @@ export const iconData = Object.entries(Icons).reduce(
         ],
       };
     }
-
-    defaultIconData.push({
-      name: key,
-      Icon: value,
-    });
-
-    DefaultIconDisplay.push(<IconPreview key={key} name={key} Icon={value} />);
 
     return {
       ...acc,
