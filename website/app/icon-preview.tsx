@@ -1,11 +1,10 @@
-import Icon from '@chakra-ui/icon';
 import * as React from 'react';
-import { Box, chakra, Text } from '@chakra-ui/react';
-import { IconDisplayData, SelectedIconType } from './icon-data-2';
+import { chakra, Text } from '@chakra-ui/react';
+import { IconDisplayData } from './icon-data-2';
+import { useAppStore } from '.';
 
 type IconPreviewProps = {
   iconData: IconDisplayData;
-  selected: SelectedIconType;
   matches?: readonly [number, number][];
   onSelect?: (icon: IconDisplayData) => void;
 };
@@ -46,12 +45,8 @@ const highlightMatches = (
   return highlights;
 };
 
-export function IconPreview({
-  iconData,
-  matches,
-  selected,
-  onSelect,
-}: IconPreviewProps) {
+export function IconPreview({ iconData, matches, onSelect }: IconPreviewProps) {
+  const selected = useAppStore(state => state.selectedIconType);
   const Icon = iconData.logo ?? iconData[selected];
 
   return (

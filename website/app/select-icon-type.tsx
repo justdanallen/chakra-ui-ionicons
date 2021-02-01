@@ -1,8 +1,9 @@
 import { Box, HStack, useRadio, useRadioGroup } from '@chakra-ui/react';
 import * as React from 'react';
+import { useAppStore } from '.';
+import { SelectedIconType } from './icon-data-2';
 
-// 1. Create a component that consumes the `useRadio` hook
-function RadioCard(props) {
+function RadioItem(props) {
   const { getInputProps, getCheckboxProps } = useRadio(props);
 
   const input = getInputProps();
@@ -34,28 +35,30 @@ function RadioCard(props) {
   );
 }
 
-type SquareRadioProps = {
-  options: string[];
-  onChange: (value: string) => void;
-};
+export function SelectIconType() {
+  const { setSelected, selected } = useAppStore(state => ({
+    selected: state.selectedIconType,
+    setSelected: state.setSelectedIconType,
+  }));
 
-export function SquareRadio({ options, onChange }: SquareRadioProps) {
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'icon-type',
-    defaultValue: 'react',
-    onChange: value => onChange(String(value)),
+    defaultValue: 'filled',
+    value: selected,
+    onChange: value =>
+      setSelected(String(value).toLowerCase() as SelectedIconType),
   });
 
-  const group = getRootProps();
+  const options: SelectedIconType[] = ['filled', 'outline', 'sharp'];
 
   return (
-    <HStack {...group}>
+    <HStack {...getRootProps()}>
       {options.map(value => {
         const radio = getRadioProps({ value });
         return (
-          <RadioCard key={value} {...radio}>
-            {value}
-          </RadioCard>
+          <RadioItem key={value} {...radio}>
+            {value.charAt(0).toUpperCase() + value.slice(1)}
+          </RadioItem>
         );
       })}
     </HStack>

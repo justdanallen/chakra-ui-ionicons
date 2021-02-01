@@ -9,19 +9,30 @@ import {
   VisuallyHidden,
   Flex,
 } from '@chakra-ui/react';
+import create from 'zustand';
 import { IconSearch } from './icon-search';
 import { LogoGithubIcon, LogoNpmIcon, MoonIcon, SunnyIcon } from '../../src';
 import { ChakraLogo } from './chakra-logo';
 import { IonIconLogo } from './ionicons-logo';
-import { SquareRadio } from './square-radio';
-import { useState } from 'react';
+import { SelectIconType } from './select-icon-type';
 import { SelectedIconType } from './icon-data-2';
+
+type AppStore = {
+  selectedIconType: SelectedIconType;
+  setSelectedIconType: (selected: SelectedIconType) => void;
+};
+
+export const useAppStore = create<AppStore>(set => ({
+  selectedIconType: 'filled',
+  setSelectedIconType: selected =>
+    set(state => ({
+      ...state,
+      selectedIconType: selected,
+    })),
+}));
 
 export function App() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const [selectedIconType, setSelectedIconType] = useState<SelectedIconType>(
-    'filled'
-  );
 
   const fullWidthCenter: ChakraProps = {
     width: '100%',
@@ -47,17 +58,9 @@ export function App() {
         </Text>
         <IconSearch
           onSelect={icon => console.log(icon)}
-          selectedIconType={selectedIconType}
           options={
             <>
-              <SquareRadio
-                options={['Filled', 'Outline', 'Sharp']}
-                onChange={value =>
-                  setSelectedIconType(
-                    value.toLocaleLowerCase() as SelectedIconType
-                  )
-                }
-              />
+              <SelectIconType />
               <IconButton
                 onClick={toggleColorMode}
                 aria-label="change color mode"

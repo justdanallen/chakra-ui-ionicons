@@ -53,14 +53,9 @@ const iconSearch = createFilteredFuse(Object.values(iconData), {
 type IconSearchProps = {
   onSelect: (icon: IconDisplayData) => void;
   options?: React.ReactNode;
-  selectedIconType: SelectedIconType;
 };
 
-export function IconSearch({
-  options,
-  onSelect,
-  selectedIconType,
-}: IconSearchProps) {
+export function IconSearch({ options, onSelect }: IconSearchProps) {
   const [searchKey, setSearchKey] = useState('');
   const { results: filteredIcons, numFound } = iconSearch(searchKey);
 
@@ -102,7 +97,6 @@ export function IconSearch({
               return (
                 <IconPreview
                   key={item + `-${idx}`}
-                  selected={selectedIconType}
                   iconData={item}
                   matches={matches?.[0].indices}
                   onSelect={onSelect}

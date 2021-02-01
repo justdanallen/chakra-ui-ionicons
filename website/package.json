@@ -20,7 +20,8 @@
   "dependencies": {
     "fuse.js": "^6.4.6",
     "react": "^17.0.1",
-    "react-app-polyfill": "^1.0.0"
+    "react-app-polyfill": "^1.0.0",
+    "zustand": "^3.3.1"
   },
   "devDependencies": {
     "@types/react": "^16.14.2",
