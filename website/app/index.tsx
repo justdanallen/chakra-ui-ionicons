@@ -13,9 +13,15 @@ import { IconSearch } from './icon-search';
 import { LogoGithubIcon, LogoNpmIcon, MoonIcon, SunnyIcon } from '../../src';
 import { ChakraLogo } from './chakra-logo';
 import { IonIconLogo } from './ionicons-logo';
+import { SquareRadio } from './square-radio';
+import { useState } from 'react';
+import { SelectedIconType } from './icon-data-2';
 
 export function App() {
   const { colorMode, toggleColorMode } = useColorMode();
+  const [selectedIconType, setSelectedIconType] = useState<SelectedIconType>(
+    'filled'
+  );
 
   const fullWidthCenter: ChakraProps = {
     width: '100%',
@@ -41,12 +47,23 @@ export function App() {
         </Text>
         <IconSearch
           onSelect={icon => console.log(icon)}
+          selectedIconType={selectedIconType}
           options={
-            <IconButton
-              onClick={toggleColorMode}
-              aria-label="change color mode"
-              icon={colorMode === 'light' ? <MoonIcon /> : <SunnyIcon />}
-            />
+            <>
+              <SquareRadio
+                options={['Filled', 'Outline', 'Sharp']}
+                onChange={value =>
+                  setSelectedIconType(
+                    value.toLocaleLowerCase() as SelectedIconType
+                  )
+                }
+              />
+              <IconButton
+                onClick={toggleColorMode}
+                aria-label="change color mode"
+                icon={colorMode === 'light' ? <MoonIcon /> : <SunnyIcon />}
+              />
+            </>
           }
         />
       </Box>

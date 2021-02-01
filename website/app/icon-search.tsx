@@ -11,8 +11,10 @@ import { CloseCircleIcon, SearchIcon } from '../../src';
 import Fuse from 'fuse.js';
 import * as React from 'react';
 import { useState } from 'react';
-import { iconData, IconDisplayData } from './icon-data';
+import { iconData, IconDisplayData, SelectedIconType } from './icon-data-2';
 import { IconPreview } from './icon-preview';
+
+const MIN_MATCH_LENGTH = 2;
 
 function createFilteredFuse<T = unknown>(
   list: T[],
@@ -41,19 +43,24 @@ function createFilteredFuse<T = unknown>(
   return search;
 }
 
-const iconSearch = createFilteredFuse(iconData.standard, {
+const iconSearch = createFilteredFuse(Object.values(iconData), {
   includeMatches: true,
   threshold: 0.1,
-  minMatchCharLength: 2,
+  minMatchCharLength: MIN_MATCH_LENGTH,
   keys: ['name'],
 });
 
 type IconSearchProps = {
   onSelect: (icon: IconDisplayData) => void;
   options?: React.ReactNode;
+  selectedIconType: SelectedIconType;
 };
 
-export function IconSearch({ options, onSelect }: IconSearchProps) {
+export function IconSearch({
+  options,
+  onSelect,
+  selectedIconType,
+}: IconSearchProps) {
   const [searchKey, setSearchKey] = useState('');
   const { results: filteredIcons, numFound } = iconSearch(searchKey);
 
@@ -90,12 +97,13 @@ export function IconSearch({ options, onSelect }: IconSearchProps) {
           mt: [5, 7],
         }}
       >
-        {!(searchKey.length && numFound === 0)
-          ? filteredIcons.map(({ item, matches, idx }) => {
+        {!(searchKey.length >= MIN_MATCH_LENGTH && numFound === 0)
+          ? filteredIcons.map(({ item, matches }, idx) => {
               return (
                 <IconPreview
-                  key={item.name + `-${idx}`}
-                  {...item}
+                  key={item + `-${idx}`}
+                  selected={selectedIconType}
+                  iconData={item}
                   matches={matches?.[0].indices}
                   onSelect={onSelect}
                 />
