@@ -5,6 +5,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerBody,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import * as React from 'react';
 import { useEffect } from 'react';
@@ -31,13 +32,17 @@ export function UsageModal() {
     if (selectedIcon) onOpen();
   }, [selectedIcon]);
 
+  const [isGreaterThan850] = useMediaQuery('(min-width: 850px)');
+  console.log(isGreaterThan850);
+
   const importName = `${selectedIcon?.logo ? 'Logo' : ''}${selectedIcon?.name}${
     keyLookUp[selectedType]
   }Icon`;
 
   return (
     <Drawer
-      placement="bottom"
+      placement={isGreaterThan850 ? 'right' : 'bottom'}
+      size={isGreaterThan850 ? 'lg' : undefined}
       onClose={onClose}
       isOpen={isOpen}
       finalFocusRef={triggerRef}
