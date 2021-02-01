@@ -44,7 +44,7 @@ export function UsageModal() {
     >
       <DrawerOverlay>
         <DrawerContent>
-          <DrawerHeader>{selectedIcon?.name} Usage</DrawerHeader>
+          <DrawerHeader>{importName} Usage</DrawerHeader>
           <DrawerBody>
             <Code
               flexGrow={1}

@@ -17,25 +17,11 @@ export const Pre = styled.pre`
   }
 `;
 
-const exampleCode = `
-(function someDemo() {
-  var test = "Hello World!";
-  console.log(test);
-})();
-
-return () => <App />;
-`.trim();
-
 type CodeProps = ChakraProps & {
   language?: 'html' | 'jsx' | 'js' | 'css';
   children: string;
 };
-export const Code = ({
-  code,
-  children,
-  language = 'jsx',
-  ...rest
-}: CodeProps) => {
+export const Code = ({ children, language = 'jsx', ...rest }: CodeProps) => {
   const { hasCopied, onCopy } = useClipboard(children);
 
   return (
