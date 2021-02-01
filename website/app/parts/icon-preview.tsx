@@ -1,13 +1,12 @@
-import Icon from '@chakra-ui/icon';
 import * as React from 'react';
-import { Box, chakra, Text } from '@chakra-ui/react';
-import { IconDisplayData } from './icon-data';
+import { chakra, Text } from '@chakra-ui/react';
+import { IconDisplayData } from '../search/icon-data';
+import { useSelectedIcon, useSelectedIconType } from '../state';
+import { useRef } from 'react';
 
 type IconPreviewProps = {
-  Icon: typeof Icon;
-  name: string;
+  iconData: IconDisplayData;
   matches?: readonly [number, number][];
-  onSelect?: (icon: IconDisplayData) => void;
 };
 
 const highlightMatches = (
@@ -46,14 +45,16 @@ const highlightMatches = (
   return highlights;
 };
 
-export function IconPreview({
-  name,
-  Icon,
-  matches,
-  onSelect,
-}: IconPreviewProps) {
+export function IconPreview({ iconData, matches }: IconPreviewProps) {
+  const { selectedIconType } = useSelectedIconType();
+  const setSelectedIcon = useSelectedIcon(state => state.setSelectedIcon);
+  const Icon = iconData.logo ?? iconData[selectedIconType];
+
+  const btnRef = useRef<HTMLButtonElement>(null);
+
   return (
     <chakra.button
+      ref={btnRef}
       padding={[3, 5]}
       mr={[3, 5]}
       mb={[3, 5]}
@@ -69,8 +70,7 @@ export function IconPreview({
         boxShadow: 'lg',
       }}
       onClick={() => {
-        console.log('IconPreview', onSelect);
-        onSelect?.({ name, Icon });
+        setSelectedIcon(iconData, btnRef);
       }}
     >
       <Icon boxSize={10} />
@@ -82,7 +82,7 @@ export function IconPreview({
         whiteSpace="nowrap"
         maxWidth="7rem"
       >
-        {highlightMatches(name, matches)}
+        {highlightMatches(iconData.name, matches)}
       </Text>
     </chakra.button>
   );

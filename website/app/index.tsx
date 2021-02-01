@@ -4,19 +4,17 @@ import {
   Heading,
   Text,
   ChakraProps,
-  useColorMode,
   IconButton,
   VisuallyHidden,
   Flex,
 } from '@chakra-ui/react';
-import { IconSearch } from './icon-search';
-import { LogoGithubIcon, LogoNpmIcon, MoonIcon, SunnyIcon } from '../../src';
-import { ChakraLogo } from './chakra-logo';
-import { IonIconLogo } from './ionicons-logo';
+import { IconSearchSection } from './search/icon-search-section';
+import { LogoGithubIcon, LogoNpmIcon } from '../../src';
+import { ChakraLogo } from './parts/chakra-logo';
+import { IonIconLogo } from './parts/ionicons-logo';
+import { UsageModal } from './parts/usage-modal';
 
 export function App() {
-  const { colorMode, toggleColorMode } = useColorMode();
-
   const fullWidthCenter: ChakraProps = {
     width: '100%',
     textAlign: 'center',
@@ -39,16 +37,7 @@ export function App() {
         <Text {...fullWidthCenter} color="gray.500" mb={[5, 7]}>
           Chakra compatible Ion Icons. Click on an icon to see usage.
         </Text>
-        <IconSearch
-          onSelect={icon => console.log(icon)}
-          options={
-            <IconButton
-              onClick={toggleColorMode}
-              aria-label="change color mode"
-              icon={colorMode === 'light' ? <MoonIcon /> : <SunnyIcon />}
-            />
-          }
-        />
+        <IconSearchSection />
       </Box>
       <Flex
         position="absolute"
@@ -76,6 +65,7 @@ export function App() {
           icon={<LogoNpmIcon />}
         />
       </Flex>
+      <UsageModal />
     </>
   );
 }
