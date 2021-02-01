@@ -1,3 +1,5 @@
+import { StatHelpText } from '@chakra-ui/react';
+import { MutableRefObject, RefObject } from 'react';
 import create from 'zustand';
 import { SelectedIconType, IconDisplayData } from './search/icon-data';
 
@@ -26,10 +28,21 @@ export const useSearchKey = create<{
 }));
 
 export const useSelectedIcon = create<{
+  triggerRef: RefObject<HTMLButtonElement> | undefined;
   selectedIcon: IconDisplayData | null;
-  setSelectedIcon: (icon: IconDisplayData) => void;
+  setSelectedIcon: (
+    icon: IconDisplayData,
+    triggerRef: RefObject<HTMLButtonElement>
+  ) => void;
+  deselectIcon: () => void;
 }>(set => ({
+  triggerRef: undefined,
   selectedIcon: null,
+  deselectIcon: () =>
+    set(state => ({
+      ...state,
+      selectedIcon: null,
+    })),
   setSelectedIcon: icon =>
     set(state => ({
       ...state,

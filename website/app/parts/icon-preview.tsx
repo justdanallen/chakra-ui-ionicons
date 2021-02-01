@@ -2,6 +2,7 @@ import * as React from 'react';
 import { chakra, Text } from '@chakra-ui/react';
 import { IconDisplayData } from '../search/icon-data';
 import { useSelectedIcon, useSelectedIconType } from '../state';
+import { useRef } from 'react';
 
 type IconPreviewProps = {
   iconData: IconDisplayData;
@@ -49,8 +50,11 @@ export function IconPreview({ iconData, matches }: IconPreviewProps) {
   const setSelectedIcon = useSelectedIcon(state => state.setSelectedIcon);
   const Icon = iconData.logo ?? iconData[selectedIconType];
 
+  const btnRef = useRef<HTMLButtonElement>(null);
+
   return (
     <chakra.button
+      ref={btnRef}
       padding={[3, 5]}
       mr={[3, 5]}
       mb={[3, 5]}
@@ -66,7 +70,7 @@ export function IconPreview({ iconData, matches }: IconPreviewProps) {
         boxShadow: 'lg',
       }}
       onClick={() => {
-        setSelectedIcon(iconData);
+        setSelectedIcon(iconData, btnRef);
       }}
     >
       <Icon boxSize={10} />

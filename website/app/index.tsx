@@ -12,6 +12,7 @@ import { IconSearchSection } from './search/icon-search-section';
 import { LogoGithubIcon, LogoNpmIcon } from '../../src';
 import { ChakraLogo } from './parts/chakra-logo';
 import { IonIconLogo } from './parts/ionicons-logo';
+import { UsageModal } from './parts/usage-modal';
 
 export function App() {
   const fullWidthCenter: ChakraProps = {
@@ -64,6 +65,7 @@ export function App() {
           icon={<LogoNpmIcon />}
         />
       </Flex>
+      <UsageModal />
     </>
   );
 }
